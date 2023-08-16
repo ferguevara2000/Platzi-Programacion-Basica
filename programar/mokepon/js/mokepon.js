@@ -16,10 +16,12 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo')
 const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
+const contenedorTarjetas = document.getElementById('contedorTarjetas')
 
 let mokepones = []
 let ataqueJugador
 let ataqueEnemigo
+let opcionDeMokepones
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -69,6 +71,17 @@ function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = 'none'
 
     sectionReiniciar.style.display = 'none'
+
+    mokepones.forEach( (mokepon) => {
+        opcionDeMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.name} />
+        <label class="tarjeta-de-mokepon" for="${mokepon.name}">
+            <p>${mokepon.name}</p>
+            <img src=${mokepon.photo} alt="${mokepon.name}">
+        </label>
+        `
+        contenedorTarjetas.innerHTML += opcionDeMokepones
+    })
     
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
     
